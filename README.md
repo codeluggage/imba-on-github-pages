@@ -1,12 +1,63 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5aad6d39-168c-482a-9f52-3d8cd9e1c8d1/deploy-status)](https://app.netlify.com/sites/vite-imba/deploys)
-
 _Bootstrapped with [imba-vite-template](https://github.com/imba/imba-vite-template)._
 
 Welcome to the Imba Vite template! Let's get you set up and ready to code!
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/imba/imba-vite-template)
+## Deploying to GitHub Pages
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fimba%2Fimba-vite-template)
+### 1) Set up GitHub Actions
+
+Click the settings of your repository, and then click into **Pages** in the left sidebar:
+
+![image](https://user-images.githubusercontent.com/1154150/189821341-3d227338-5bca-416e-b75d-7ed0224ac900.png)
+
+### 2) Use the Node.js workflow
+
+Browse the available workflows, and select the Node.js workflow.
+
+### 3) Edit the node.js.yml file
+
+```yml
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish: ./dist
+```
+
+### To be continued
+
+TODO
 
 
 ## Code structure
