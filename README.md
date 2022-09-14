@@ -55,9 +55,13 @@ jobs:
         publish: ./dist
 ```
 
-### To be continued
+### 4) Update the `base` of the Vite config
 
-TODO
+Depending on how you are deploying this, you'll need to modify the `base` Vite configuration in the `vite.config.js` file:
+
+If you want your repo to be deployed on its own (for example <https://my-neat-website.github.io>), replace the `imba-on-github-pages` part with the name of your repository. 
+
+If you want your repo to be your primary GitHub username website (for example <https://my-neat-username.github.io>), then delete the `base: "/imba-on-github-pages/",` line from the config completely.
 
 
 ## Code structure
