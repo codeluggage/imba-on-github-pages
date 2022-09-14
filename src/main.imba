@@ -23,7 +23,7 @@ tag app
 				# use svg as an image
 				<img.logo[filter@hover:drop-shadow(0 0 4em #ff3e00aa) h:6.5em transform:rotateY(180deg)] src="./assets/imba.svg" alt="Imba Logo">
 
-		<h1[c:yellow4]> "Vite + Imba"
+		<h1[c:yellow4]> "Vite + Imba on GitHub Pages"
 		<div.card> 
 			<Counter>
 		<p> "Check out"
