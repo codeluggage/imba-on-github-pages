@@ -16,50 +16,19 @@ Browse the available workflows, and select the Node.js workflow.
 
 ### 3) Edit the node.js.yml file
 
-```yml
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish: ./dist
-```
+See <https://github.com/codeluggage/imba-on-github-pages/blob/main/.github/workflows/gh-pages.yml> for an example of a workflow you can use. 
 
 ### 4) Update the `base` of the Vite config
 
-Depending on how you are deploying this, you'll need to modify the `base` Vite configuration in the `vite.config.js` file:
+The deploy will adjust to fit your GitHub username, and the Vite configuration in the `vite.config.js` file: <https://github.com/codeluggage/imba-on-github-pages/blob/main/vite.config.js#L20>. 
+
+To make it work for you, either remove or update the `base` configuration.
+
+#### Deployed as its own website
 
 If you want your repo to be deployed on its own (for example <https://my-neat-website.github.io>), replace the `imba-on-github-pages` part with the name of your repository. 
+
+#### Deployed to your username
 
 If you want your repo to be your primary GitHub username website (for example <https://my-neat-username.github.io>), then delete the `base: "/imba-on-github-pages/",` line from the config completely.
 
