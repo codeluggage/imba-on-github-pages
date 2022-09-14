@@ -33,14 +33,6 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - run: npm install
       - run: npm run build
       - run: ./deploy.sh
