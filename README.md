@@ -10,15 +10,15 @@ Click the settings of your repository, and then click into **Pages** in the left
 
 ![image](https://user-images.githubusercontent.com/1154150/189821341-3d227338-5bca-416e-b75d-7ed0224ac900.png)
 
-### 2) Use the Node.js workflow
+### 2) Use a Node.js workflow
 
-Browse the available workflows, and select the Node.js workflow.
+If you want to do this from scratch, then browse the available workflows and select the Node.js workflow.
 
-### 3) Edit the node.js.yml file
+Otherwise you can use the `.github/workflows/gh-pages.yml` file in this repository: <https://github.com/codeluggage/imba-on-github-pages/blob/main/.github/workflows/gh-pages.yml> 
 
-See <https://github.com/codeluggage/imba-on-github-pages/blob/main/.github/workflows/gh-pages.yml> for an example of a workflow you can use. 
+See for an example of a workflow you can use. 
 
-### 4) Update the `base` of the Vite config
+### 3) Update the `base` of the Vite config
 
 The deploy will adjust to fit your GitHub username, and the Vite configuration in the `vite.config.js` file: <https://github.com/codeluggage/imba-on-github-pages/blob/main/vite.config.js#L20>. 
 
